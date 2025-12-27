@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Charaland ML</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+  <section class="hero">
+    <p class="tag">Proyek Machine Learning</p>
+    <h1>
+      Perkiraan Harga Rumah<br>
+      Berbasis Data Jabodetabek
+    </h1>
+    <p class="subtitle">
+      Sebuah eksplorasi bagaimana data historis
+      dapat membantu memperkirakan harga properti
+      secara lebih terukur.
+    </p>
+    <p class="note">
+      Model dilatih menggunakan dataset properti residensial Jabodetabek tahun <strong>2022</strong>.
+      Hasil estimasi bersifat <em>indikatif</em> dan digunakan sebagai pendekatan berbasis data, bukan sebagai penentu nilai jual pasti.
+    </p>
+    <div class="scroll-hint">scroll ↓</div>
+  </section>
+  
+  
+  <section class="section fade">
+    <h2>Konteks Dataset</h2>
+    <p>
+      Dataset yang digunakan berisi data properti residensial di wilayah Jabodetabek pada tahun 2022 yang bersumber dari Kaggle.<br>
+      Informasi yang tersedia mencakup lokasi,luas tanah dan bangunan, jumlah kamar,serta atribut properti lainnya yang digukanan untuk tujuan eksperimen.
+    </p>
+  </section>
+  
+  
+  <section class="section fade">
+    <h2>Pendekatan Model</h2>
+    <p>
+      Model dibangun menggunakan algoritma <em>XGBoost Regressor</em> untuk mempelajari pola hubungan antara karakteristik rumah dan harga jual berdasarkan data historis.<br>
+      Pendekatan ini dipilih karena kemampuannya menangani data tabular dengan kompleksitas tinggi.
+    </p>
+  </section>
+  
+  
+  <section class="stats fade">
+    <div>
+      <p class="label">Algoritma</p>
+      <p class="value">XGBoost Regressor</p>
+    </div>
+    
+    <div>
+      <p class="label">R² Score</p>
+      <p class="value">0.85</p>
+    </div>
+    
+    <div>
+      <p class="label">MAE</p>
+      <p class="value">± 650 Juta Rupiah</p>
+    </div>
+  </section>
+  
+  
+  <section class="section fade">
+    <h2>Catatan Model</h2>
+    <p>
+      Model prediksi dibangun menggunakan pendekatan supervised machine learning berbasis data historis.<br>
+      Oleh karena itu, hasil estimasi sangat bergantung pada pola yang terdapat dalam dataset pelatihan.
+    </p>
+    <p>
+      Perbedaan kondisi pasar, lokasi spesifik,serta faktor non-teknis lainnya dapat menyebabkan perbedaan antara hasil estimasi dan harga aktualdi lapangan.
+    </p>
+  </section>
+  
+  
+  <section class="section ml fade">
+    <h2>Coba Estimasi Harga Rumah</h2>
+    <p>
+      Masukkan karakteristik properti untuk melihat estimasi harga berdasarkan pola data historis Jabodetabek tahun 2022.
+    </p>
+    
+    
+    <a href="{{ url_for('estimate') }}">
+      <button class="btn-ml">
+        Mulai Estimasi Harga
+      </button>
+    </a>
+  </section>
+  
+  
+  <footer>
+    <p>
+      Dibuat oleh <strong>RaCha Team</strong> · Mahasiswa Sistem Informasi · Proyek Pembelajaran Machine Learning
+    </p>
+  </footer>
+
+<script src="static/script.js"></script>
+</body>
+</html>

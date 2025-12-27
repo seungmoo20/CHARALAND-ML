@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Estimasi Harga Rumah · Charaland ML</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HERO -->
+   <section class="hero hero-small">
+    <p class="tag">Estimasi Berbasis Machine Learning</p>
+    <h1>Perkirakan Harga Rumah Anda</h1>
+    
+    <p class="subtitle">
+      Masukkan informasi dasar rumah untuk mendapatkan estimasi harga berbasis data properti Jabodetabek tahun 2022.
+    </p>
+  </section>
+  
+  <!-- PENJELASAN -->
+   <section class="section fade">
+    <h2>Sebelum Memulai</h2>
+    <p>
+      Estimasi ini dihasilkan oleh model Machine Learning yang dilatih menggunakan data transaksi rumah di wilayah Jabodetabek tahun 2022. 
+      Hasil prediksi bersifat <strong>indikatif</strong> dan tidak menggantikan penilaian profesional.
+    </p>
+  </section>
+  
+  <!-- FORM -->
+   <section class="section ml fade">
+    <h2>Input Data Rumah</h2>
+    
+    <form class="estimate-form" method="POST">
+      <div class="form-grid">
+        
+        <!-- NUMERIK -->
+         <div class="form-group">
+          <label>Luas Bangunan (m²)</label>
+          <input type="number" name="building_size_m2" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Luas Tanah (m²)</label>
+          <input type="number" name="land_size_m2" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Kamar Tidur</label>
+          <input type="number" name="bedrooms" value="0">
+        </div>
+        
+        <div class="form-group">
+          <label>Kamar Mandi</label>
+          <input type="number" name="bathrooms" value="0">
+        </div>
+        
+        <div class="form-group">
+          <label>Jumlah Lantai</label>
+          <input type="number" name="floors" value="1">
+        </div>
+        
+        <div class="form-group">
+          <label>Garasi</label>
+          <input type="number" name="garages" value="0">
+        </div>
+        
+        <div class="form-group">
+          <label>Carport</label>
+          <input type="number" name="carports" value="0">
+        </div>
+        
+        <!-- LOKASI -->
+         <div class="form-group">
+          <label>Kota</label>
+          <select name="city" required>
+            <option value="">Pilih Kota</option>
+            <option value="Jakarta Selatan">Jakarta Selatan</option>
+            <option value="Jakarta Barat">Jakarta Barat</option>
+            <option value="Jakarta Timur">Jakarta Timur</option>
+            <option value="Jakarta Utara">Jakarta Utara</option>
+            <option value="Depok">Depok</option>
+            <option value="Bekasi">Bekasi</option>
+            <option value="Tangerang">Tangerang</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Kecamatan</label>
+          <input type="text" name="district" placeholder="Opsional">
+        </div>
+        
+        <!-- KATEGORIK -->
+         <div class="form-group">
+          <label>Sertifikat</label>
+          <select name="certificate">
+            <option value="Unknown">Tidak diketahui</option>
+            <option value="SHM">SHM</option>
+            <option value="HGB">HGB</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Furnishing</label>
+          <select name="furnishing">
+            <option value="Unknown">Tidak diketahui</option>
+            <option value="Unfurnished">Unfurnished</option>
+            <option value="Semi Furnished">Semi Furnished</option>
+            <option value="Furnished">Furnished</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Kondisi Properti</label>
+          <select name="property_condition">
+            <option value="Unknown">Tidak diketahui</option>
+            <option value="New">Baru</option>
+            <option value="Good">Baik</option>
+            <option value="Needs Renovation">Perlu Renovasi</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Tipe Properti</label>
+          <select name="property_type">
+            <option value="rumah">Rumah</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Daya Listrik</label>
+          <select name="electricity">
+            <option value="Unknown">Tidak diketahui</option>
+            <option value="1300 VA">1300 VA</option>
+            <option value="2200 VA">2200 VA</option>
+            <option value="3500 VA">3500 VA</option>
+          </select>
+        </div>
+        
+        <!-- LAT LONG (hidden) -->
+         <input type="hidden" name="lat" value="-6.2">
+         <input type="hidden" name="long" value="106.8">
+        </div>
+        
+        <button class="btn-ml" type="submit">
+          Estimasi Harga Rumah
+        </button>
+      </form>
+    </section>
+    
+    <!-- HASIL PREDIKSI -->
+     {% if prediction %}
+     <section class="section fade result">
+      <h2>Hasil Estimasi</h2>
+      
+      <p class="result-intro">
+        Berdasarkan data yang Anda masukkan, model memperkirakan harga rumah sebagai berikut:
+      </p>
+      
+      <div class="price-box">
+        <p class="price-label">Perkiraan Harga Rumah</p>
+        <p class="price-value">Rp {{ prediction }}</p>
+      </div>
+      
+      <p class="note">
+        Estimasi ini dihasilkan dari model Machine Learning berbasis data properti Jabodetabek tahun 2022.
+        Nilai dapat berbeda dengan kondisi pasar saat ini.
+      </p>
+    </section>
+    {% endif %}
+    
+    <footer>
+      <p>
+        Dibuat oleh <strong>RaCha Team</strong> · Mahasiswa Sistem Informasi · Proyek Pembelajaran Machine Learning
+      </p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
