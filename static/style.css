@@ -369,3 +369,56 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
   color: #7C9BFF;
 }
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 80px 24px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    line-height: 1.2;
+  }
+
+  .hero h1::before {
+    display: none;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 64px 24px;
+  }
+
+  .section h2 {
+    font-size: 26px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    padding: 48px 24px;
+  }
+
+  .stats div {
+    padding: 24px;
+  }
+
+  footer {
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .price-value {
+    font-size: 28px;
+  }
+}
