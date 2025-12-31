@@ -8,6 +8,10 @@ properti tahun 2022.
 Proyek ini dikembangkan sebagai bagian dari pembelajaran dan eksplorasi
 penerapan Artificial Intelligence pada data properti residensial.
 
+## 🔗 Demo Website
+Website dapat diakses secara publik melalui:
+https://charalandml.my.id
+
 
 ## 📌 Tujuan Proyek
 1. Mengembangkan model Machine Learning untuk memprediksi harga rumah.
@@ -64,6 +68,12 @@ Notebook pengembangan tersedia pada folder `notebooks/`.
 
 Hasil prediksi bersifat estimasi dan mencerminkan kondisi pasar tahun 2022.
 
+Environment:
+- Python 3.10
+- Flask
+- XGBoost
+- Scikit-learn
+
 
 ## 🌐 Website
 Website dibangun menggunakan:
@@ -72,6 +82,11 @@ Website dibangun menggunakan:
 
 Pengguna dapat memasukkan karakteristik rumah dan memperoleh estimasi harga
 secara otomatis melalui model Machine Learning.
+
+
+Catatan:
+Website ini menggunakan model Machine Learning berbasis data tahun 2022,
+sehingga hasil estimasi bersifat indikatif.
 
 
 ## 🚀 Cara Menjalankan Secara Lokal
